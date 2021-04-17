@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block title %}<title>Home</title>{% endblock %}
+</head>
+<body>
+    <div class='menu'>
+        <a href="{% url 'cadastrar' %}" id="cadastros">Home</a><br>
+        <a href="{% url 'index' %}" id="cadastros">Alunos Cadastrados</a>
+    </div>
+
+    <div class='content'>
+        <h1>Novo Cadastro</h1>
+        
+        <form method="POST" class="post-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form>
+
+    </div>  
+
+</body>
+</html>

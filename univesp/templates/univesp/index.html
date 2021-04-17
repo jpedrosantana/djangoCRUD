@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block title %}<title>Cadastros</title>{% endblock %}
+</head>
+<body>
+  <div class='menu'>
+    <a href="{% url 'cadastrar' %}" id="cadastros">Home</a><br>
+    <a href="{% url 'index' %}" id="cadastros">Alunos Cadastrados</a>
+  </div>
+
+  <div class='page-header'>
+    <h1>Alunos Cadastrados</h1>
+    <table>
+      <tbody>
+        <tr>
+          <td>ID</td>
+          <td>Nome</td>
+          <td>Sobrenome</td>
+          <td>Matrícula</td>
+        </tr>
+        {% for aluno in alunos %}
+        <!--<form method="POST">{% csrf_token %}-->
+          <tr > 
+                <td>{{aluno.id}}</td>
+                <td>{{aluno.nome}}</td>
+                <td>{{aluno.sobrenome}}</td>
+                <td>{{aluno.matricula}}</td>
+                <td><button type="submit"><a href="{% url 'delete' aluno.id%}">Excluir</a></button></td>
+                <!--<td><button type="submit" name="modify_aluno"><a href="/alterar/{{aluno.pk}}">Editar</a></button></td>-->
+                <td><button type="submit"><a href="{% url 'alterar' aluno.id%}">Editar</a></button></td>
+          </tr>
+        <!--</form>-->
+        {%endfor%}
+          </tbody>
+    </table>
+  </div>
+
+
+</body>
+</html>
