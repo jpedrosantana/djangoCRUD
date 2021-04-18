@@ -1,11 +1,10 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from univesp.models import AlunoUnivesp
-from django.views import generic
-
 from django import forms
 # Create your views here.
 
+#Criação da classe Formulário
 class PostForm(forms.ModelForm):
     class Meta:
         model = AlunoUnivesp
@@ -19,7 +18,7 @@ def index(request):
 
 def alterar(request, id):
     aluno = AlunoUnivesp.atributos.get(id = id)
-    form = PostForm(request.POST or None, instance=aluno) #já vai começar preenchido
+    form = PostForm(request.POST or None, instance=aluno) #Form já vai começar preenchido
 
     if form.is_valid():
         form.save()

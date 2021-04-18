@@ -1,24 +1,42 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {% block title %}<title>Home</title>{% endblock %}
+    {% block title %}<title>Cadastrar Aluno</title>{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
-<body>
-    <div class='menu'>
-        <a href="{% url 'cadastrar' %}" id="cadastros">Home</a><br>
-        <a href="{% url 'index' %}" id="cadastros">Alunos Cadastrados</a>
-    </div>
+<body>  
+    <header>
+        <div class="logo">
+          <img src="{% static 'images/Logo_univesp.png' %}" alt="logo">
+        </div>
+      
+        <nav class='menu'>
+          <a href="{% url 'cadastrar' %}" id="cadastros">Cadastrar Aluno</a>
+          <a href="{% url 'index' %}" id="cadastros">Alunos Cadastrados</a>
+        </nav>
+    </header>
+
+    <main>
 
     <div class='content'>
-        <h1>Novo Cadastro</h1>
-        
+        {% if aluno %}
+            <h1>Alterar Cadastro</h1>
+            <h2>O Id do aluno é {{aluno.id}}</h2>
+        {% else %}
+            <h1>Novo Cadastro</h1>
+        {% endif %}
+
         <form method="POST" class="post-form">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Save</button>
+            <button type="submit">Salvar</button>
         </form>
 
     </div>  
+
+</main>
+
 
 </body>
 </html>

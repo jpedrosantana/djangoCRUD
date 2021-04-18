@@ -1,6 +1,7 @@
 from django.db import models
 
-# Create your models here.
+# Criação da classe Aluno com os campos a serem
+# inseridos no banco de dados.
 class AlunoUnivesp(models.Model):
     nome=models.CharField(
         max_length=255,
